@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function SearchBox() {
+export default function SearchBox({ setIsSearching}: { setIsSearching: (value: boolean) => void }) {
   type Owner = {
     avatar_url: string;
   };
@@ -34,6 +34,8 @@ export default function SearchBox() {
       const data = await res.json();
       setResults(data.items); // 検索結果を保存
       setError(null); // エラーをリセット
+    //   デフォルト一覧と検索結果一覧の切り替えのためのフラグを立てる
+      setIsSearching(true);
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);

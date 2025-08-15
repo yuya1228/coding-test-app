@@ -26,6 +26,7 @@ export default function RepositoryList() {
         setRepos(data);
       } catch (error) {
         if (error instanceof Error) {
+          setError(error.message);
         }
         setError("リポジトリの取得に失敗しました。");
       }
@@ -48,7 +49,12 @@ export default function RepositoryList() {
                 height={48}
                 className="rounded-full"
               />
-              <Link href={`/repos/${repo.name}`} className="text-lg font-medium">{repo.name}</Link>
+              <Link
+                href={`/repos/${repo.name}`}
+                className="text-lg font-medium"
+              >
+                {repo.name}
+              </Link>
             </div>
           </li>
         ))}
