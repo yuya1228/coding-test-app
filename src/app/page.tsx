@@ -1,3 +1,4 @@
+"use client";
 import SearchBox from "./components/SearchBox";
 import RepositoryList from "./components/RepositoryList";
 
