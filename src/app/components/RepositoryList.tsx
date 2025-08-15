@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function RepositoryList() {
   type Owner = {
@@ -47,7 +48,7 @@ export default function RepositoryList() {
                 height={48}
                 className="rounded-full"
               />
-              <a href={repo.html_url} className="text-lg font-medium">{repo.name}</a>
+              <Link href={`/repos/${repo.name}`} className="text-lg font-medium">{repo.name}</Link>
             </div>
           </li>
         ))}
