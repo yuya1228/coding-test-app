@@ -2,8 +2,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import PaginatedItems from "./PaginatedItems";
 
-export default function SearchBox({ setIsSearching}: { setIsSearching: (value: boolean) => void }) {
+export default function SearchBox({
+  setIsSearching,
+}: {
+  setIsSearching: (value: boolean) => void;
+}) {
   type Owner = {
     avatar_url: string;
   };
@@ -32,15 +37,15 @@ export default function SearchBox({ setIsSearching}: { setIsSearching: (value: b
       }
 
       const data = await res.json();
-      setResults(data.items); // 検索結果を保存
-      setError(null); // エラーをリセット
-    //   デフォルト一覧と検索結果一覧の切り替えのためのフラグを立てる
+      setResults(data.items);
+      setError(null);
+      //デフォルト一覧と検索結果一覧の切り替えのためのフラグを立てる
       setIsSearching(true);
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
       }
-      setResults(null); 
+      setResults(null);
     }
   };
 
@@ -66,31 +71,36 @@ export default function SearchBox({ setIsSearching}: { setIsSearching: (value: b
       {results && (
         <div className="p-6">
           <h1 className="text-2xl mb-4">検索結果</h1>
-          <ul className="space-y-4">
-            {/* 検索結果のリポジトリを表示 */}
-            {results.map((repo) => (
-              <li key={repo.id}>
-                <div className="flex items-center space-x-4 p-4 border rounded-lg hover:shadow-md">
-                  <Image
-                    src={repo.owner.avatar_url}
-                    alt="username"
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                  />
-                  <Link
-                    href={`/repos/${repo.name}`}
-                    className="text-lg font-medium"
-                  >
-                    {repo.name}
-                  </Link>
-                </div>
-              </li>
-            ))}
-          </ul>
+          {error && <p className="text-red-500 mt-4">{error}</p>}
+          <PaginatedItems
+            items={results}
+            itemsPerPage={3}
+            renderItem={(repo) => (
+              <div className="p-6">
+                <ul className="space-y-4">
+                  <li key={repo.id}>
+                    <div className="flex items-center space-x-4 p-4 border rounded-lg hover:shadow-md">
+                      <Image
+                        src={repo.owner.avatar_url}
+                        alt="username"
+                        width={48}
+                        height={48}
+                        className="rounded-full"
+                      />
+                      <Link
+                        href={`/repos/${repo.name}`}
+                        className="text-lg font-medium"
+                      >
+                        {repo.name}
+                      </Link>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            )}
+          />
         </div>
       )}
-      {error && <p className="text-red-500 mt-4">{error}</p>}
     </>
   );
 }

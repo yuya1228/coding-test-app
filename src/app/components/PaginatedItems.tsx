@@ -35,12 +35,13 @@ export default function PaginatedItems<T>({
         pageCount={pageCount}
         previousLabel="戻る"
         renderOnZeroPageCount={null}
-        // ===== css =====
-        containerClassName="flex items-center gap-2 justify-center" // 全体を横並び中央
-        pageLinkClassName="" // 各ページ番号
-        activeLinkClassName="" // アクティブページ
-        previousLinkClassName="" // < previous
-        nextLinkClassName="" // next >
+        containerClassName="flex items-center justify-center gap-2 mt-6"
+        pageClassName="rounded-md"
+        pageLinkClassName="px-3 py-1 block border border-gray-300 text-gray-700 bg-white hover:bg-blue-50 transition cursor-pointer"
+        activeLinkClassName="bg-blue-500 text-gray-100 border-blue-500 hover:bg-blue-600"
+        previousLinkClassName="px-3 py-1 border border-gray-300 text-gray-700 bg-white hover:bg-blue-50 rounded-md transition cursor-pointer"
+        nextLinkClassName="px-3 py-1 border border-gray-300 text-gray-700 bg-white hover:bg-blue-50 rounded-md transition cursor-pointer"
+        breakClassName="px-3 py-1 text-gray-500"
       />
     </>
   );
