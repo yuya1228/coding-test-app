@@ -68,10 +68,10 @@ export default function SearchBox({
           </button>
         </div>
       </div>
+      {error && <p className="text-red-500 mt-4">{error}</p>}
       {results && (
         <div className="p-6">
           <h1 className="text-2xl mb-4">検索結果</h1>
-          {error && <p className="text-red-500 mt-4">{error}</p>}
           <PaginatedItems
             items={results}
             itemsPerPage={3}
