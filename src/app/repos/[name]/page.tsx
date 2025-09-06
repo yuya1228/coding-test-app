@@ -4,10 +4,9 @@ import Link from "next/link";
 export default async function RepoDetail({
   params,
 }: {
-  params: Promise<{ name: string }>;
+  params: { name: string };
 }) {
-  const { name } = await params;
-  //   GitHubユーザー名
+  const { name } = params;
   const owner = "yuya1228";
   const res = await fetch(`https://api.github.com/repos/${owner}/${name}`, {
     headers: {
