@@ -9,7 +9,7 @@ describe('RepoDetail', () => {
       login: 'test-user',
     },
     language: 'JavaScript',
-    description: 'This is a test repository',
+    description: 'テストリポジトリ',
     stargazers_count: 10,
     watchers_count: 5,
     forks_count: 2,
@@ -38,11 +38,11 @@ describe('RepoDetail', () => {
     await waitFor(() => {
       expect(screen.getByText('リポジトリ: test-repo')).toBeInTheDocument();
       expect(screen.getByText('使用言語: JavaScript')).toBeInTheDocument();
-      expect(screen.getByText('This is a test repository')).toBeInTheDocument();
-      expect(screen.getByText('10')).toBeInTheDocument(); // Star数
-      expect(screen.getByText('5')).toBeInTheDocument(); // Watcher数
-      expect(screen.getByText('2')).toBeInTheDocument(); // Fork数
-      expect(screen.getByText('1')).toBeInTheDocument(); // Issue数
+      expect(screen.getByText('テストリポジトリ')).toBeInTheDocument();
+      expect(screen.getByText('10')).toBeInTheDocument();
+      expect(screen.getByText('5')).toBeInTheDocument();
+      expect(screen.getByText('2')).toBeInTheDocument();
+      expect(screen.getByText('1')).toBeInTheDocument();
       expect(screen.getByText('GitHubで見る →')).toBeInTheDocument();
     });
   });
