@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# コーディングテストの取り組み内要
 
-## Getting Started
+## プロジェクト概要
+GitHub APIを使用したリポジトリ一覧アプリ
 
-First, run the development server:
+### 工夫をした箇所
+- TypeScriptを使用することで型安全を意識
+- コンポーネントはcomponentsフォルダにまとめて一目でパーツがわかるようにした。
+- コンポーネントを部品ごとに分けることで再利用性を向上。
+- APIのロジックをroute.tsに分離しコードの可読性と再利用性を向上。
+- layout.tsxとappフォルダ直下のpage.tsxをシンプルに保つためにロジックを分離。
+- React-paginateライブラリを使用し、リポジトリ一覧をページネーションで表示。
+- try-catchを用いてエラー時にもエラーメッセージを表示。
+- __tests__フォルダ内のテストコードのディレクトリ構成もテスト先のファイルと同じように構成することによって、どこのテストコードか分かりやすくした。
+- 環境変数（.env）を利用し、APIキーなどをコードに直書きせず管理することでセキュリティと環境ごとの柔軟性を確保。
+- Jest + React Testing Libraryを利用し、コンポーネント単位でのテストを実施。
+- ユーザー操作を想定したテスト（クリック・入力など）を通してUIの動作確認を実施。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### AIを利用した場合は利用方法
+- GitHub Copilotを利用し、エディタ内で補完提案を受けながら効率的にコーディングを進めた
+- ChatGPTを利用し、コードの意図やライブラリの使い方を解説してもらい、理解を深めながら実装を進めた
+- AIの提案はそのまま使うのではなく、内容を確認・修正し、最終的なコードとして採用
